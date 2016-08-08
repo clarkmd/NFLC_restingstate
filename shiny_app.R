@@ -12,10 +12,6 @@ long <- reshape(berlin,
             times = c("Degree", "Local Efficiency", "Clustering Coefficient", "Strength"),
             new.row.names = 1:19520,
             direction="long")
-str(long$subnet)
-
-long$subnet <- as.factor(long$subnet)
-
 metriclist<-unique(long$metric)
 subnetlist <- unique(as.character(long$subnet))
 
@@ -30,11 +26,6 @@ ui <- fluidPage(
   mainPanel(
     plotOutput("testPlot")
   ))
-
-
-#pdata <- subset(long, subnet=="frontal")
-#pdata <- subset(pdata, metric=="Degree")
-
 
 server <- function(input, output){
   
